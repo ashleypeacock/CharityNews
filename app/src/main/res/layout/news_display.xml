@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- For the news display activity. When news items are clicked, this opens up -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Article Name"
+            android:id="@+id/newsdisplayarticlename"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newsdisplaycontent"
+            android:layout_below="@+id/newsdisplayarticlename"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:scrollbars = "vertical" />
+    </RelativeLayout>
+</LinearLayout>
