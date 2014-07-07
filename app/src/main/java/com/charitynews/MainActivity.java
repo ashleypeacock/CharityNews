@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.charitynews.news.DisplayNewsActivity;
 import com.charitynews.news.NewsItem;
 import com.charitynews.news.NewsListAdapter;
+import com.charitynews.news.notifications.DemoActivity;
 import com.charitynews.news.scraper.WordPressScraper;
 
 
@@ -78,6 +79,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             startActivity(newsDisplayIntent);
 
         }
+    }
+
+    public void openDemoActivity(View view) {
+        Intent intent = new Intent(this, DemoActivity.class);
+        startActivity(intent);
     }
 
     public void openTwitter() {
