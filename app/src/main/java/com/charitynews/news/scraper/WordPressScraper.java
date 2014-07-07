@@ -1,4 +1,4 @@
-package com.charitynews.news.json;
+package com.charitynews.news.scraper;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,9 +12,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * Obtains news from a JSON object.
+ * Obtains news from a word press page.
  */
-public class NewsScraper extends AsyncTask<String, String, JSONObject>{
+public class WordPressScraper extends AsyncTask<String, String, JSONObject>{
 
     public static String url = "http://autism-simulator.com/?json=get_recent_posts";
 
@@ -22,7 +22,7 @@ public class NewsScraper extends AsyncTask<String, String, JSONObject>{
     protected JSONObject doInBackground(String... url) {
         JSONObject jo = null;
         try {
-            jo = getJSON(url[0]);
+            jo = getJSONFromMainPage(url[0]);
         } catch(Exception e) {
 
         }
@@ -33,7 +33,12 @@ public class NewsScraper extends AsyncTask<String, String, JSONObject>{
         return url;
     }
 
-    public JSONObject getJSON(String url) {
+    /**
+     * Gets articles from the main page of a word press site.
+     * @param url
+     * @return
+     */
+    public JSONObject getJSONFromMainPage(String url) {
         JSONObject jsonObject = null;
         try {
             DefaultHttpClient defaultClient = new DefaultHttpClient();

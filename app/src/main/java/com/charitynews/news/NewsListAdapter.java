@@ -1,6 +1,7 @@
 package com.charitynews.news;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,19 +38,19 @@ public class NewsListAdapter extends ArrayAdapter<NewsItem> {
 
         if (i != null) {
 
-            TextView tt = (TextView) v.findViewById(R.id.articlename);
-            TextView mtd = (TextView) v.findViewById(R.id.authorarticle);
-            TextView bt = (TextView) v.findViewById(R.id.articlecontent);
+            TextView articleName = (TextView) v.findViewById(R.id.articlename);
+            TextView articleAuthor = (TextView) v.findViewById(R.id.authorarticle);
+            TextView articleContent = (TextView) v.findViewById(R.id.articlecontent);
 
-            if (tt != null) {
-                tt.setText("Article name: " + i.getArticleName());
+            if (articleName != null) {
+                articleName.setText("Article name: " + i.getArticleName());
             }
 
-            if (mtd != null) {
-                mtd.setText("Author" + i.getAuthorName());
+            if (articleAuthor != null) {
+                articleAuthor.setText("Author: " + i.getAuthorName());
             }
-            if (bt != null) {
-                bt.setText("Details: " + i.getArticleContent());
+            if (articleContent != null) {
+                articleContent.setText("Details: " + Html.fromHtml(i.getTrimmedArticle()));
             }
         }
 

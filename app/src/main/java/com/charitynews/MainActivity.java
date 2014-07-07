@@ -13,7 +13,8 @@ import android.widget.Toast;
 import com.charitynews.news.DisplayNewsActivity;
 import com.charitynews.news.NewsItem;
 import com.charitynews.news.NewsListAdapter;
-import com.charitynews.news.json.NewsScraper;
+import com.charitynews.news.scraper.WordPressScraper;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +23,9 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
+
+
+
     ArrayList<NewsItem> newsItems = new ArrayList<NewsItem>();
 
     ListView listView;
@@ -30,20 +34,24 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // setup the UI
         setContentView(R.layout.activity_main);
-
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new NewsListAdapter(this, R.layout.list_item, newsItems));
         listView.setOnItemClickListener(this);
-        getNewsItems(NewsScraper.url);
+        getNewsItems(WordPressScraper.url);
+
+
+
     }
+
 
     private void getNewsItems(String url) {
         JSONObject jo = null;
         JSONArray posts = null;
         try {
             Log.d("json posts", "Trying to get json posts ");
-            jo = new NewsScraper().execute(NewsScraper.url).get();
+            jo = new WordPressScraper().execute(WordPressScraper.url).get();
             posts = jo.getJSONArray("posts");
             for(int i = 0; i < posts.length(); i++) {
                 JSONObject post = posts.getJSONObject(i);
@@ -68,7 +76,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             newsDisplayIntent.putExtra(DisplayNewsActivity.NEWSITEM_KEY, selectedItem);
 
             startActivity(newsDisplayIntent);
-
 
         }
     }

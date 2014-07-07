@@ -3,6 +3,7 @@ package com.charitynews.news;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.charitynews.R;
@@ -24,10 +25,11 @@ public class DisplayNewsActivity extends Activity {
         setContentView(R.layout.news_display);
 
         TextView newsContent = (TextView) findViewById(R.id.newsdisplaycontent);
-        newsContent.setText(newsItem.getArticleContent());
+        newsContent.setText(Html.fromHtml(newsItem.getArticleContent()));
 
         TextView articleName = (TextView) findViewById(R.id.newsdisplayarticlename);
         articleName.setText(newsItem.getArticleName());
+
     }
 
 }

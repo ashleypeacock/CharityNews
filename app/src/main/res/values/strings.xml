@@ -7,4 +7,8 @@
     <string name="displaynewsactivitytitle">News article</string>
     <string name="twitter">https://twitter.com/UK_ADHD</string>
 
+    <string name="send">Send</string>
+    <string name="clear">Clear</string>
+
+
 </resources>

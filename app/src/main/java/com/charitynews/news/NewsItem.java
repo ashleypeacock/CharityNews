@@ -3,9 +3,7 @@ package com.charitynews.news;
 import java.io.Serializable;
 
 /**
- * Do I want this to fetch the information and store it, or simply
- * obtain and display? What about images?
- * Change constructor to acquire article from word press maybe?
+ * Represents an individual news item.
  */
 public class NewsItem implements Serializable {
     private String articleName;
@@ -14,7 +12,7 @@ public class NewsItem implements Serializable {
     private int id;
     private boolean isLongActicle = false;
     // this is for the display when the user clicks on it.
-    private int articleTrimEnd = 150;
+    private int articleTrimEnd = 100;
 
     public NewsItem(String articleName, String articleContent, String authorName, int id) {
         this.articleName = articleName;
@@ -31,7 +29,10 @@ public class NewsItem implements Serializable {
      * @return article trimmed.
      */
     public String getTrimmedArticle() {
-        return articleContent.substring(0, articleTrimEnd);
+        if(articleContent != null && articleContent.length() > articleTrimEnd) {
+            return articleContent.substring(0, articleTrimEnd);
+        }
+        return articleContent;
     }
 
     public boolean isLongArticle() {
