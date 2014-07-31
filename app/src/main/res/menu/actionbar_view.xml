@@ -1,0 +1,18 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/menu_new_form"
+    android:icon="@drawable/addisslogo"
+    android:title="test"
+    android:showAsAction="ifRoom|withText">
+    <menu>
+        <item android:id="@+id/form1"
+            android:icon="@drawable/addisslogo"
+            android:title="Form 1"
+             />
+        <item android:id="@+id/form2"
+            android:icon="@drawable/addisslogo"
+            android:title="Form 2"
+             />
+    </menu>
+</item>
+</menu>
